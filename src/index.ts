@@ -15,8 +15,26 @@ app.get("/audio", (c) => {
   const audioFile = path.join(__dirname, "../", "static", "audio.mp3");
   const fileStream = fs.createReadStream(audioFile);
 
-  // Return the readStream as the response body => like readStream.pipe(res) for nodejs
-  return c.body(fileStream);
+  // creating readableStream for web adaptation
+  const readableStream = new ReadableStream({
+    start(controller) {
+      fileStream.on("data", (chunk) => {
+        controller.enqueue(chunk);
+      });
+
+      fileStream.on("end", () => {
+        controller.close();
+      });
+      fileStream.on("error", (err) => {
+        controller.error(err);
+      });
+    },
+    cancel() {
+      fileStream.destroy(); 
+    },
+  });
+  // Return the ReadableStream as the response body => like readStream.pipe(res) for nodejs
+  return c.body(readableStream);
 });
 
 const port = 3000;
