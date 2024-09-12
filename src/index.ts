@@ -1,9 +1,7 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
-import { stream } from "hono/streaming";
 import fs from "fs";
 import path from "path";
-import { Readable } from "stream";
 
 const app = new Hono();
 
