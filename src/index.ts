@@ -6,7 +6,7 @@ import path from "path";
 const app = new Hono();
 
 app.get("/", (c) => {
-  return c.text("Hello test!");
+  return c.text("Hello, Hono!");
 });
 
 app.get("/audio", (c) => {

@@ -5,10 +5,17 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.12.2",
+    "@neondatabase/serverless": "^0.9.5",
+    "@typescript-eslint/eslint-plugin": "^8.5.0",
+    "@typescript-eslint/parser": "^8.5.0",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.33.0",
+    "eslint-plugin-drizzle": "^0.2.3",
     "hono": "^4.5.11"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
+    "drizzle-kit": "^0.24.2",
     "tsx": "^4.7.1"
   }
 }
